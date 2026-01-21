@@ -1,0 +1,124 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to Elyan Vadsaria.
+---
+
+## Recent Updates
+
+Stay informed about new features, bug fixes, and improvements in Elyan Vadsaria. You receive notifications for major releases through your dashboard at `https://dashboard.example.com`. Check this page regularly to see what's new.
+
+<Columns cols={3}>
+  <Card title="v1.2.0" icon="zap" href="#v120">
+    Enhanced performance and new collaboration tools.
+  </Card>
+  <Card title="v1.1.0" icon="settings" href="#v110">
+    Configuration improvements and security updates.
+  </Card>
+  <Card title="v1.0.0" icon="rocket" href="#v100">
+    Initial stable release with core functionality.
+  </Card>
+</Columns>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration for teams, allowing multiple users to edit documents simultaneously via WebSockets on `wss://api.example.com/ws`.
+- Introduced dashboard analytics with charts showing usage metrics.
+
+## Improvements
+
+- Optimized API response times by `>30%` for endpoints like `/v1/projects`.
+- Enhanced search functionality with fuzzy matching.
+
+## Bug Fixes
+
+- Fixed authentication token refresh issues in long sessions.
+- Resolved file upload errors for large attachments (`>100MB`).
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["bugfix", "security"]}>
+
+## New Features
+
+- Custom webhook support for integrations at `https://your-webhook-url.com/webhook`.
+
+## Improvements
+
+- Better error handling with detailed logs in the console.
+
+## Bug Fixes
+
+- Patched potential XSS vulnerabilities in user inputs.
+- Fixed dashboard crash on invalid date filters.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core document management API at `https://api.example.com/v1/docs`.
+- User authentication with JWT tokens.
+
+## Breaking Changes
+
+- Updated API versioning from `/v0` to `/v1`.
+
+## Bug Fixes
+
+- Initial stability improvements.
+
+</Update>
+
+## Upgrading to the Latest Version
+
+<Steps>
+  <Step title="Backup Your Data" icon="database">
+    Export your projects from the dashboard.
+
+````bash
+curl -H "Authorization: Bearer YOUR_TOKEN" \
+  https://api.example.com/v1/export
+````
+
+  </Step>
+  <Step title="Update Client" icon="download">
+    Install the latest SDK.
+
+    <CodeGroup tabs="npm,yarn">
+    ````bash
+npm install elyan-vadsaria@latest
+````
+    ````bash
+yarn add elyan-vadsaria@latest
+````
+    </CodeGroup>
+  </Step>
+  <Step title="Test Changes" icon="check-circle">
+    Run your integration tests against staging.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Subscribe to updates via email at `https://dashboard.example.com/notifications` to get alerts on new releases.
+</Callout>
+
+## Upcoming Changes
+
+<ExpandableGroup>
+  <Expandable title="v1.3.0 Planned Features" default-open="true">
+    - AI-powered document summarization.
+    - Mobile app support.
+    - Advanced permission roles.
+  </Expandable>
+  <Expandable title="Breaking Changes in v2.0">
+    - Migration to GraphQL API.
+    - Removal of legacy `/v1` endpoints.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="info">
+  Found a bug or have a feature request? Create an issue on GitHub at `https://github.com/org/elyan-vadsaria`.
+</Callout>

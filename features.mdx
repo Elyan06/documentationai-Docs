@@ -1,0 +1,112 @@
+---
+title: Core Features of Elyan Vadsaria
+description: Explore the main capabilities of the platform for organizing and collaborating on documentation.
+---
+
+## Overview
+
+Elyan Vadsaria provides powerful tools to create, manage, and collaborate on your project documentation. You can build structured spaces, edit content seamlessly, track changes, and share with teams. These features ensure your docs stay organized and up-to-date.
+
+<Columns cols={2}>
+  <Card title="Rich Editing" icon="edit-3" href="#editing-tools">
+    Create and format documents with markdown, embeds, and components.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#version-control">
+    Track changes, revert edits, and maintain history effortlessly.
+  </Card>
+  <Card title="Collaboration" icon="users" href="#collaboration">
+    Comment, @mention, and share docs securely with your team.
+  </Card>
+  <Card title="Search & Organization" icon="search" href="#organization">
+    Find content quickly and structure spaces hierarchically.
+  </Card>
+</Columns>
+
+## Document Creation and Editing Tools
+
+Start new documents from templates or blank pages. The editor supports markdown, JSX components, and embeds for interactive content.
+
+<Steps>
+  <Step title="Create a Document" icon="plus">
+    Navigate to your space and click `New Document`. Choose a template like "API Reference" or start blank.
+  </Step>
+  <Step title="Edit Content" icon="edit">
+    Use the visual editor for bold, lists, and tables. Switch to source mode for advanced MDX.
+  </Step>
+  <Step title="Add Components" icon="layers">
+    Insert `<Callout>`, `<Tabs>`, or code blocks directly in the editor.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Preview changes in real-time to ensure your docs render correctly before publishing.
+</Callout>
+
+## Version Control for Docs
+
+Every edit creates a new version. You review diffs, restore previous states, and branch for experiments.
+
+```javascript
+// Example API to fetch versions
+const versions = await fetch('https://api.example.com/docs/{docId}/versions');
+const data = await versions.json();
+console.log(data.versions); // Array of version objects
+```
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Revert to specific version
+  await fetch(`https://api.example.com/docs/{docId}/revert`, {
+    method: 'POST',
+    body: JSON.stringify({ versionId: 'v1.2.3' })
+  });
+  ```
+  ```python
+  # Revert to specific version
+  import requests
+  requests.post('https://api.example.com/docs/{docId}/revert',
+                json={'versionId': 'v1.2.3'})
+  ```
+</CodeGroup>
+
+## Collaboration Features
+
+Invite team members and use comments for feedback. Share public links or embed docs.
+
+<Tabs>
+  <Tab title="Comments" icon="message-circle">
+    Add inline comments on any text. @mention users for notifications.
+
+    ```markdown
+    This feature needs review @[user:john.doe].
+    ```
+  </Tab>
+  <Tab title="Sharing" icon="share-2">
+    Generate shareable links with view or edit permissions. Set expiration dates.
+  </Tab>
+</Tabs>
+
+<Callout kind="info">
+  Real-time cursors show who is editing, reducing conflicts.
+</Callout>
+
+## Search and Organization
+
+Powerful search indexes all content. Organize with spaces, folders, and tags.
+
+| Feature | Description | Use Case |
+|---------|-------------|----------|
+| Full-Text Search | Query across titles, body, and metadata | Find API endpoints quickly |
+| Folders & Spaces | Nested hierarchy for projects | Group docs by team or version |
+| Tags | Custom labels for filtering | Categorize as `internal` or `public` |
+
+<Expandable title="Advanced Search Filters" default-open="false">
+  Combine filters like `tag:api AND space:project-v2` for precise results. Use the API for programmatic search:
+
+  ```bash
+  curl "https://api.example.com/search?q=authentication&space=docs" \
+    -H "Authorization: Bearer YOUR_TOKEN"
+  ```
+</Expandable>
+
+These features make Elyan Vadsaria your go-to platform for scalable documentation. Start by creating your first space today.

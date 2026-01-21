@@ -1,0 +1,185 @@
+---
+title: Getting Started with Elyan Vadsaria
+description: Set up your account and create your first documentation space in just a few minutes.
+---
+
+## Quickstart Overview
+
+Get started with elyan vadsaria in under five minutes. This guide walks you through signing up, creating your default documentation workspace, importing project files, and navigating the dashboard. You'll have a fully functional documentation site ready to customize.
+
+<Callout kind="info">
+
+**Prerequisites**
+
+- A modern web browser (Chrome, Firefox, or Safari)
+- GitHub account (optional, for easy imports)
+- No prior setup required—everything runs in the cloud
+
+</Callout>
+
+## Complete Setup in Four Steps
+
+Follow these steps to launch your first documentation space.
+
+<Steps>
+
+<Step title="Sign Up for an Account" icon="user-plus">
+
+Visit `https://app.elyanvadsaria.com/signup` and create your free account. Enter your email, choose a strong password, and verify your email address.
+
+No credit card required for the starter plan.
+
+</Step>
+
+<Step title="Create Your Default Workspace" icon="folder-plus">
+
+After login, click **New Workspace** on the dashboard. Name it `my-project-docs` and select **Documentation** as the type.
+
+elyan vadsaria auto-generates a starter template with navigation, homepage, and changelog.
+
+````bash
+# Example workspace config (auto-applied)
+workspace:
+  name: "my-project-docs"
+  type: "documentation"
+  theme: "default"
+````
+
+</Step>
+
+<Step title="Import Initial Project Files" icon="upload">
+
+Choose your import method below. elyan vadsaria supports GitHub repos, ZIP uploads, and direct file drag-and-drop.
+
+</Step>
+
+<Step title="Publish and Navigate" icon="rocket">
+
+Click **Publish** to generate your live site at `https://docs.elyanvadsaria.com/my-project-docs`. Tour the dashboard to edit pages, add components, and collaborate.
+
+</Step>
+
+</Steps>
+
+## Import Methods
+
+Select the best way to bring in your project files.
+
+<Tabs>
+
+<Tab title="GitHub" icon="github">
+
+Connect your GitHub account and select a repo like `your-org/my-repo`.
+
+elyan vadsaria imports Markdown, MDX, and assets automatically.
+
+1. Authorize elyan vadsaria on GitHub.
+2. Paste your repo URL: `https://github.com/your-org/my-repo`.
+3. Map files to pages (e.g., `README.md` → homepage).
+
+</Tab>
+
+<Tab title="Local Files" icon="upload">
+
+Drag and drop your project folder or upload a ZIP.
+
+Supported: `.md`, `.mdx`, images, JSON configs.
+
+<Callout kind="tip">
+
+Keep folder structure flat for best results—under `>100` files initially.
+
+</Callout>
+
+</Tab>
+
+<Tab title="CLI Import" icon="terminal">
+
+Use the elyan vadsaria CLI for automation.
+
+<CodeGroup tabs="npm,yarn">
+
+````bash
+npm install -g @elyan/vadsaria-cli
+vadsaria import ./my-project --workspace my-project-docs
+````
+
+````bash
+yarn global add @elyan/vadsaria-cli
+vadsaria import ./my-project --workspace my-project-docs
+````
+
+</CodeGroup>
+
+</Tab>
+
+</Tabs>
+
+## Dashboard Tour
+
+The dashboard centralizes your documentation workflow.
+
+<Columns cols={3}>
+
+<Card title="Workspaces" icon="folders" href="#">
+
+Manage multiple docs sites. Create, duplicate, or archive spaces.
+
+</Card>
+
+<Card title="Editor" icon="edit-3" href="#">
+
+Real-time MDX editor with live preview and AI suggestions.
+
+</Card>
+
+<Card title="Analytics" icon="bar-chart-3" href="#">
+
+Track page views, search queries, and reader engagement.
+
+</Card>
+
+</Columns>
+
+<Image
+  src="https://via.placeholder.com/1200x600/3B82F6/white?text=Dashboard+Screenshot"
+  alt="elyan vadsaria dashboard overview showing workspaces, editor, and analytics panels"
+  width="1200"
+  height="600"
+/>
+
+## Next Steps
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+
+**Import fails?** Check file sizes (`<50MB` per file) and ensure public GitHub access.
+
+**Build errors?** Verify MDX syntax—no raw `{` or `<` in prose without backticks.
+
+Run `vadsaria validate ./my-project` via CLI.
+
+</Expandable>
+
+Dive deeper with these guides:
+
+<Columns cols={2}>
+
+<Card title="Customize Themes" icon="palette" href="/configuration">
+
+Apply your brand color `#3B82F6` and custom layouts.
+
+</Card>
+
+<Card title="Add Authentication" icon="shield" href="/authentication">
+
+Protect private docs with API keys.
+
+</Card>
+
+</Columns>
+
+<Callout kind="success">
+
+Congratulations! Your documentation is live. Share `https://docs.elyanvadsaria.com/my-project-docs` and invite collaborators.
+
+</Callout>

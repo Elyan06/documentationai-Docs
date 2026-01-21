@@ -1,0 +1,193 @@
+---
+title: Integrations and Extensions
+description: Connect Elyan Vadsaria with third-party tools to enhance your documentation workflow.
+---
+
+## Overview
+
+Elyan Vadsaria supports seamless integrations with popular tools to automate your documentation processes. Set up webhooks for real-time notifications, sync with Git repositories for version control, connect collaboration apps like Slack and GitHub for team updates, and use the API for custom solutions. These integrations help you streamline workflows and keep your team informed.
+
+<Callout kind="info">
+  Review your Elyan Vadsaria plan limits for webhook and API usage before enabling integrations.
+</Callout>
+
+## Available Integrations
+
+Explore the key integrations available.
+
+<Columns cols={2}>
+  <Card title="Webhooks" icon="zap" href="#webhooks">
+    Receive instant updates on documentation changes.
+  </Card>
+  <Card title="Git Sync" icon="git-branch" href="#git-sync">
+    Automatically pull updates from your repository.
+  </Card>
+  <Card title="Slack Notifications" icon="message-circle" href="#collaboration">
+    Get alerts in your Slack channels.
+  </Card>
+  <Card title="GitHub Actions" icon="github" href="#collaboration">
+    Trigger workflows on doc updates.
+  </Card>
+  <Card title="Custom API" icon="code" href="#api-access">
+    Build tailored automation.
+  </Card>
+</Columns>
+
+## Setting Up Webhooks
+
+Webhooks deliver real-time payloads to your endpoint when events occur, such as document updates or publishes.
+
+### Create a Webhook
+
+<Steps>
+  <Step title="Navigate to Integrations" icon="settings">
+    Go to your Elyan Vadsaria dashboard at `https://dashboard.example.com/integrations`.
+  </Step>
+  <Step title="Add Webhook" icon="plus">
+    Click "New Webhook" and enter your endpoint URL, like `https://your-webhook-url.com/webhook`.
+  </Step>
+  <Step title="Select Events" icon="zap">
+    Choose events: `doc.updated`, `doc.published`, `page.viewed`.
+  </Step>
+  <Step title="Test and Save" icon="check-circle">
+    Send a test payload and save.
+  </Step>
+</Steps>
+
+### Webhook Payload Example
+
+Expect JSON payloads like this:
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  {
+    "event": "doc.updated",
+    "doc_id": "doc_123abc",
+    "timestamp": 1699123456,
+    "data": {
+      "title": "API Guide",
+      "url": "https://docs.example.com/api"
+    }
+  }
+  ```
+  ```python
+  {
+    "event": "doc.updated",
+    "doc_id": "doc_123abc",
+    "timestamp": 1699123456,
+    "data": {
+      "title": "API Guide",
+      "url": "https://docs.example.com/api"
+    }
+  }
+  ```
+</CodeGroup>
+
+<ParamField path="event" param-type="string" required="true">
+  The trigger event name.
+</ParamField>
+
+<ParamField path="doc_id" param-type="string" required="true">
+  Unique document identifier.
+</ParamField>
+
+## Git Repository Integration
+
+Sync your documentation directly with Git providers.
+
+<Tabs>
+  <Tab title="GitHub" icon="github">
+    Connect your repo to auto-deploy changes.
+    
+    <Steps>
+      <Step title="Authorize GitHub">
+        In Elyan Vadsaria, select "GitHub" and authorize the app.
+      </Step>
+      <Step title="Select Repository">
+        Choose `your-org/docs-repo` and branch `main`.
+      </Step>
+      <Step title="Configure Path">
+        Set docs path to `/docs`.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="GitLab" icon="git-branch">
+    Link your GitLab project for CI/CD sync.
+    
+    ```bash
+    git remote add elyan https://gitlab.com/your-project/docs.git
+    git push elyan main
+    ```
+  </Tab>
+</Tabs>
+
+## Collaboration Apps
+
+Notify your team instantly.
+
+### Slack Setup
+
+Use this Incoming Webhook URL format in Elyan Vadsaria:
+
+```
+https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+```
+
+Replace with your actual Slack webhook (use `YOUR_SLACK_WEBHOOK` placeholder).
+
+## API Access for Custom Integrations
+
+Build advanced automations with the REST API.
+
+<Request tabs="cURL,JavaScript" show-lines="true">
+  ```bash
+  curl -X POST https://api.example.com/v1/docs \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "title": "New Doc",
+      "content": "Initial content"
+    }'
+  ```
+  ```javascript
+  const response = await fetch('https://api.example.com/v1/docs', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      title: 'New Doc',
+      content: 'Initial content'
+    })
+  });
+  ```
+</Request>
+
+<Response tabs="200,400">
+  ```json
+  {
+    "id": "doc_456def",
+    "title": "New Doc",
+    "status": "created"
+  }
+  ```
+  ```json
+  {
+    "error": "Invalid API key",
+    "code": 401
+  }
+  ```
+</Response>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer token: `Bearer YOUR_API_KEY`.
+</ParamField>
+
+<Expandable title="Advanced API Rate Limits" default-open="false">
+  API calls are limited to 1000/minute. Monitor usage via dashboard.
+</Expandable>
+
+<Callout kind="tip">
+  Start with webhooks for simple notifications, then explore API for complex automations. Check [Elyan Vadsaria status](https://status.example.com) for uptime.
+</Callout>
